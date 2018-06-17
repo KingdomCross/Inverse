@@ -15,7 +15,6 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         var xAxis = Input.GetAxis("Horizontal");
-        Debug.Log(xAxis);
         var velocity = Rb2d.velocity;
         velocity.x = xAxis * Speed;
 
