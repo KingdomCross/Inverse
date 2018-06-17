@@ -7,10 +7,10 @@ public class TestScript : MonoBehaviour {
     public GameObject keyObject;
     public GameObject[] monsterObjects;
     public bool isKeySwitch;
+
 	// Use this for initialization
 	void Start () {
-        Debug.Log("OnStart");
-        
+
 	}
 	
 	// Update is called once per frame
@@ -20,7 +20,6 @@ public class TestScript : MonoBehaviour {
 	}
     void OnTriggerStay2D(Collider2D trigger2D)
     {
-        Debug.Log("Hiro");
         if(trigger2D.tag == "Player")
         {
             if(Input.GetKeyDown(KeyCode.E))
@@ -30,7 +29,7 @@ public class TestScript : MonoBehaviour {
                 else
                 {
                     foreach (GameObject monster in monsterObjects)
-                       Instantiate(monster, transform.position, Quaternion.identity);
+                    Instantiate(monster, transform.position, Quaternion.identity);
                 }
             }
         }
@@ -41,7 +40,6 @@ public class TestScript : MonoBehaviour {
             {
                 Instantiate(keyObject, transform.position, Quaternion.identity);
             }
-
         }
         if(trigger2D.gameObject.tag == "WrongMove")
         {
@@ -52,14 +50,8 @@ public class TestScript : MonoBehaviour {
                 {
                     Instantiate(monster, transform.position, Quaternion.identity);
                 }
-
             }
-        
         }*/
-
-
-
-
     }
 
 }
