@@ -1,5 +1,5 @@
 ﻿// Use this for initialization
-private void Start()
+/*void Start()
 {
     // Set the path for the credits.txt file
     path = "Assets/Resources/Credits.txt";
@@ -37,4 +37,4 @@ void CreateCredits()
         Debug.Log(c);
         Credits.Add(creditTextItem);
     }
-}
+}*/
