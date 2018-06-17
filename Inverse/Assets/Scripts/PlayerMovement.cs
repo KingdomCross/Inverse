@@ -7,12 +7,14 @@ public class PlayerMovement : MonoBehaviour {
     public float jumpSpeed;
     public Rigidbody2D Rb2d;
     private bool jumpBool = false;
-    public AudioClip source;
+    public AudioSource source;
+    private float soundTime;
+    public float footSoundPlayTime;
 
 	// Use this for initialization
 	void Start () {
         Rb2d = GetComponent<Rigidbody2D>();
-        source = GetComponent<AudioClip>();
+        source = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -28,6 +30,12 @@ public class PlayerMovement : MonoBehaviour {
             velocity.y = jumpSpeed;
         }
         Rb2d.velocity = velocity;
+        soundTime += Time.deltaTime;
+        if (soundTime >= footSoundPlayTime && (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
+        {
+            soundTime = 0;
+            source.Play();
+        }
     }
 
     void OnCollisionStay2D(Collision2D collision)
