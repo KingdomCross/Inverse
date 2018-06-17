@@ -7,10 +7,12 @@ public class PlayerMovement : MonoBehaviour {
     public float jumpSpeed;
     public Rigidbody2D Rb2d;
     private bool jumpBool = false;
+    public AudioClip source;
 
 	// Use this for initialization
 	void Start () {
         Rb2d = GetComponent<Rigidbody2D>();
+        source = GetComponent<AudioClip>();
 	}
 	
 	// Update is called once per frame
