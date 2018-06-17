@@ -6,17 +6,18 @@ public class EnemyMovement : MonoBehaviour {
     public float movement;
     public float timeMovement;
     private float maxTimeMovement;
+    private Rigidbody2D rb2d;
 
 	// Use this for initialization
 	void Start () {
         maxTimeMovement = timeMovement;
-
+        rb2d = GetComponent<Rigidbody2D>();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        var x = Time.deltaTime * movement;
-        transform.Translate(x, 0, 0);
+        var velocity = new Vector2(movement, rb2d.velocity.y);
+        rb2d.velocity = velocity;
         timeMovement -= Time.deltaTime;
         if (timeMovement <= 0)
         {
