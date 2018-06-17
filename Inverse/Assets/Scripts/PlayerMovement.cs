@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour {
     public float Speed;
     public float jumpSpeed;
     public Rigidbody2D Rb2d;
+    private bool jumpBool = false;
 
 	// Use this for initialization
 	void Start () {
@@ -18,11 +19,17 @@ public class PlayerMovement : MonoBehaviour {
         var velocity = Rb2d.velocity;
         velocity.x = xAxis * Speed;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)) && jumpBool == true)
         {
             Debug.Log("Down");
+            jumpBool = false;
             velocity.y = jumpSpeed;
         }
         Rb2d.velocity = velocity;
+    }
+
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        jumpBool = true;
     }
 }
